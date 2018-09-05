@@ -10,10 +10,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'ag-grid/dist/styles/ag-grid.css'
 import 'ag-grid/dist/styles/ag-theme-balham.css'
-
+import echarts from 'echarts'
 
 Vue.config.productionTip = false
 
+// Vue.prototype.$echarts = echarts
 
 Vue.use(Bootstrapvue);
 Vue.use(VueResource);

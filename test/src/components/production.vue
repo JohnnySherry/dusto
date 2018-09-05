@@ -8,7 +8,8 @@
                              :columnDefs="columnDefs"
                              :rowData="rowData"
 				>					
-				</ag-grid-vue>				
+				</ag-grid-vue>
+				<div id="myChart" :style="{width: '1300px', height: '300px'}"></div>			
 			</div>
 		</b-card>
 	</div>

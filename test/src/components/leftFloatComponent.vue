@@ -35,7 +35,7 @@
 					   this.$router.push("/production");
 					   break;
 					case this.menuText.performanceQuery:
-					   this.$router.push("/home/sales");
+					   this.$router.push("/bom");
 					   break;
 					case this.menuText.performanceRelease:
 					   this.$router.push("/home/PMC");
