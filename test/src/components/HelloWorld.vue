@@ -1,95 +1,47 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+   <div class="bodyContainer">
+      <b-card-group deck style="height: 100%;width: 100%;background-color: rgb(231, 249, 255);">
+         <div v-if="!leftMenuOpened" class="leftMenuCloseDiv">
+            <div class="triangle_border_right" @click="handleMenuSwitch"></div>
+         </div>
+         <div v-else class="leftMenuOpenDiv">
+            <div style="width:95%;display: inline-flex">
+               <LeftFloat/>
+            </div>
+            <div style="width:5%;display: inline-flex">
+               <div class="triangle_border_right" @click="handleMenuSwitch"></div>
+            </div>
+         </div>
+         <div :class="rightContainerClass">
+            <div class="container-fluid">
+               <router-view></router-view>
+            </div>
+         </div>
+      </b-card-group>     
+   </div>
 </template>
 
 <script>
+import LeftFloat from "@/components/LeftFloatComponent";
+
 export default {
   name: 'HelloWorld',
+  components: {LeftFloat},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      rightContainerClass: 'rightContainerWhileLeftMenuOpen',
+      leftMenuOpened: true,
     }
+  },
+  methods: {
+    handleMenuSwitch(){
+      this.leftMenuOpened=!this.leftMenuOpened;
+      if(this.leftMenuOpened){
+        this.rightContainerClass='rightContainerWhileLeftMenuOpen';
+      }else{
+        this.rightContainerClass='rightContainerWhileLeftMenuClose'
+      }
+    },
   }
 
 }
